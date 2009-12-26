@@ -1,0 +1,18 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:zcml="http://namespaces.zope.org/zcml"
+           xmlns:topp="http://namespaces.openplans.org/topp"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:browser="http://namespaces.zope.org/browser"
+ 	   xmlns:opencore="http://namespaces.openplans.org/opencore"
+	   >
+
+  <!-- your configuration here -->
+
+  <browser:page
+    class=".view.WikiEdit"
+    for="opencore.interfaces.IOpenPage"
+    name="edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
+</configure>

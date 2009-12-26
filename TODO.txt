@@ -1,0 +1,11 @@
+
+1. Factor the HTML rendering logic out of views.py `WikiEdit.blank_slate_content`
+   and into a template file (ZopeTwoPageTemplateFile or otherwise)
+
+2. Use i18n:translate tags for the text contents of the template
+
+3. Create a locales/ directory for this plugin's text, generate PO files, and
+   use an opencore:registerTranslations ZCML directive to hook up the l10n
+
+I think that would make it pretty stable and reusable.
+
