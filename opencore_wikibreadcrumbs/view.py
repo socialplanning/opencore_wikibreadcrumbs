@@ -1,4 +1,5 @@
 from opencore.nui.wiki.view import WikiEdit as Base
+from opencore.interfaces import IOpenPage
 
 class WikiEdit(Base):
     def blank_slate_content(self):
@@ -8,7 +9,7 @@ class WikiEdit(Base):
 
         if project:
             links.append(
-                '<a href="%s">space home: %s</a>' % (
+                '<a class="project_home" href="%s">%s</a>' % (
                     project.absolute_url(), project.Title())
                 )
 
@@ -16,21 +17,14 @@ class WikiEdit(Base):
         if self.request.form.get('created_from'):
             referer = self.request.form['created_from']
             try:
-                referer = project[referer]
-            except:
+                referer = IOpenPage(project[referer])
+            except (KeyError, TypeError):
                 pass
 
         if referer:
             links.append(
-                '<a href="%s">origin: %s</a>' % (
+                '<a class="created_from" rel="prev" href="%s">%s</a>' % (
                     referer.absolute_url(), referer.Title())
                 )
 
-        links.append(
-            '<a href="%s">site home</a>' % self.portal.absolute_url()
-            )
-        links.append(
-            '<a href="%s/about">help</a>' % self.portal.absolute_url()
-            )
-
-        return ' | '.join(links)
+        return ' | '.join(links) + "<hr />"
