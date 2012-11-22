@@ -3,7 +3,7 @@ import sys, os
 
 version = '0.0'
 
-setup(name='wikibcrumbs',
+setup(name='opencore_wikibreadcrumbs',
       version=version,
       description="",
       long_description="""\
@@ -22,8 +22,8 @@ setup(name='wikibcrumbs',
       ],
       entry_points="""
       [opencore.versions]
-      wikibcrumbs = wikibcrumbs
+      wikibcrumbs = opencore_wikibreadcrumbs
       [topp.zcmlloader]
-      opencore = wikibcrumbs
+      opencore = opencore_wikibreadcrumbs
       """,
       )
