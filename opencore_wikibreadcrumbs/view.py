@@ -19,7 +19,7 @@ class WikiEdit(Base):
             try:
                 referer = IOpenPage(project[referer])
             except (KeyError, TypeError):
-                pass
+                referer = None
 
         if referer:
             links.append(
@@ -27,4 +27,4 @@ class WikiEdit(Base):
                     referer.absolute_url(), referer.Title())
                 )
 
-        return ' | '.join(links) + "<hr />"
+        return "<div class='oc-boxy'>"  + ' | '.join(links) + "</div><hr />" + "<p>Please enter some text for your page</p>"
